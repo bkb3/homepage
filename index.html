@@ -1,468 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Hi! I am Bikash. I am currently a postdoctoral fellow at EMBL-EBI.">
-    <meta name="keywords" content="Bikash Bhandari Postdoc">
-    <meta name="author" content="Bikash Bhandari">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bikash Bhandari</title>
-  <link rel=icon href=images/favicon/favicon.png type=image/png sizes=16x16 />
-    <style type="text/css">
-      @font-face {
-        font-family: 'TTSquaresCondensed-Thin';
-        src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.eot');
-        src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.eot?#iefix') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.woff2') format('woff2'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.woff') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.ttf') format('truetype');
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Hi! I am Bikash. I am currently a postdoctoral fellow at EMBL-EBI." />
+        <meta name="keywords" content="Bikash Bhandari Postdoc" />
+        <meta name="author" content="Bikash Bhandari" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bikash Bhandari</title>
+        <link rel=icon href=images/favicon/favicon.png type=image/png sizes=16x16 />
+        <style type="text/css">
+            @font-face {
+                font-family: "TTSquaresCondensed-Thin";
+                src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.eot");
+                src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.eot?#iefix") format("embedded-opentype"),
+                    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.woff2") format("woff2"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.woff") format("woff"),
+                    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/39132/TTSquaresCondensed-Thin.ttf") format("truetype");
+            }
 
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        font-family: 'TTSquaresCondensed-Thin';
-      }
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                font-family: "TTSquaresCondensed-Thin";
+            }
 
-      #background {
-        min-height: 100%;
-      }
+            #background {
+                min-height: 100%;
+            }
 
-      canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
+            canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+            /*https://hero-generator.netlify.app/*/
+            .masthead {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                text-align: left;
+                width: 100%;
+                height: 100vh;
+                /* if you don't want it to take up the full screen, reduce this number */
+                overflow: hidden;
+                background-size: cover !important;
+                background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 37%, rgba(0, 0, 0, 0.65) 100%);
+            }
 
-      .masthead {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        text-align: left;
-        width: 100%;
-        height: 100vh;
-        /* if you don't want it to take up the full screen, reduce this number */
-        overflow: hidden;
-        background-size: cover !important;
-        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 37%, rgba(0, 0, 0, 0.65) 100%);
-      }
+            h1 {
+                font-style: normal;
+                color: #eee;
+                font-size: 11vmin;
+                letter-spacing: 0.03em;
+                line-height: 1;
+                /*text-shadow: 1px 2px 4px rgba(254, 0, 254, 0.8);*/
+                text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #ffd5ff, 3px 0px 4px #ffd5ff, 2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px, 20px 0vw 200px #d42cca, 40px 0vw 200px #d42cca;
+                margin-bottom: 20px;
+                text-align: left;
+                margin-left: 20px;
+            }
 
-      h1 {
-        font-style: normal;
-        color: #eee;
-        font-size: 11vmin;
-        letter-spacing: 0.03em;
-        line-height: 1;
-        /*text-shadow: 1px 2px 4px rgba(254, 0, 254, 0.8);*/
-        text-shadow: 1px 0px 4px #FFD5FF, 2px 0px 4px #FFD5FF, 3px 0px 4px #FFD5FF, 2px 0px 3px #D42CCA, 2px 3px 15px #D42CCA, 2px 0px 15px, 5px 0px 125px, 20px 0vw 200px #D42CCA, 40px 0vw 200px #D42CCA;
-        margin-bottom: 20px;
-        text-align: left;
-        margin-left: 20px;
-      }
+            h2 {
+                color: #eee;
+                font-size: 5vmin;
+                letter-spacing: 0.03em;
+                line-height: 1;
+                margin-bottom: 10px;
+                text-align: left;
+                margin-left: 20px;
+                text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);
+            }
 
-      h2 {
-        color: #eee;
-        font-size: 5vmin;
-        letter-spacing: 0.03em;
-        line-height: 1;
-        margin-bottom: 10px;
-        text-align: left;
-        margin-left: 20px;
-        text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);
-      }
+            h3 {
+                color: #eee;
+                font-size: 2.5vmin;
+                letter-spacing: 0.03em;
+                line-height: 1;
+                margin-bottom: 10px;
+                text-align: left;
+                margin-left: 20px;
+                /*text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);*/
+            }
 
-      h3 {
-        color: #eee;
-        font-size: 2.5vmin;
-        letter-spacing: 0.03em;
-        line-height: 1;
-        margin-bottom: 10px;
-        text-align: left;
-        margin-left: 20px;
-        /*text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);*/
-      }
+            .flicker-slow {
+                animation: flicker 1.5s infinite alternate;
+            }
 
-      .flicker-slow {
-        animation: flicker 1.5s infinite alternate;
-      }
+            /*https://codepen.io/silvia-odwyer/pen/yLgKePK*/
 
-      @keyframes flicker {
-        100% {
-          text-shadow:
-            0 0 4px #fff,
-            0 0 11px #fff,
-            0 0 19px #fff,
-            0 0 40px #bc13fe,
-            0 0 80px #bc13fe,
-            0 0 90px #bc13fe,
-            0 0 100px #bc13fe,
-            0 0 150px #bc13fe;
-        }
+            @keyframes flicker {
+                100% {
+                    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #bc13fe, 0 0 80px #bc13fe, 0 0 90px #bc13fe, 0 0 100px #bc13fe, 0 0 150px #bc13fe;
+                }
 
-        0% {
-          text-shadow:
-            0 0 2px #fff,
-            0 0 4px #fff,
-            0 0 6px #fff,
-            0 0 10px #bc13fe,
-            0 0 45px #bc13fe,
-            0 0 55px #bc13fe,
-            0 0 70px #bc13fe,
-            0 0 80px #bc13fe;
-        }
-      }
+                0% {
+                    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 10px #bc13fe, 0 0 45px #bc13fe, 0 0 55px #bc13fe, 0 0 70px #bc13fe, 0 0 80px #bc13fe;
+                }
+            }
 
-      /*https://codepen.io/Gingernaut/pen/qOgMLy*/
-      .position {
-        margin-left: 20px;
-        margin-top: 20px;
-      }
+            /*https://codepen.io/Gingernaut/pen/qOgMLy*/
+            .position {
+                margin-left: 20px;
+                margin-top: 20px;
+            }
 
-      .spot {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-      }
+            .spot {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
 
-      /*
+            /*
          This is the outer svg wrapper that the SVG itself will 
          fill. Multiple svg-wrapper classes can be put side by side.
          */
-      .svg-wrapper {
-        margin-top: 0;
-        position: relative;
-        width: 150px;
-        /*make sure to use same height/width as in the html*/
-        height: 40px;
-        display: inline-block;
-        border-radius: 3px;
-        margin-left: 5px;
-        margin-right: 5px
-      }
+            .svg-wrapper {
+                margin-top: 0;
+                position: relative;
+                width: 150px;
+                /*make sure to use same height/width as in the html*/
+                height: 40px;
+                display: inline-block;
+                border-radius: 3px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
 
-      /*
+            /*
          This is where we define the fill, color, thickness,
          and stroke pattern of the SVG when there is no hover.
          The dasharray and offset together define the line position
          under the words. Here's also where the transition speed is set.
          */
-      #shape {
-        stroke-width: 6px;
-        fill: transparent;
-        stroke: #defe47;
-        stroke-dasharray: 85 400;
-        stroke-dashoffset: -220;
-        transition: 1s all ease;
-      }
+            #shape {
+                stroke-width: 6px;
+                fill: transparent;
+                stroke: #defe47;
+                stroke-dasharray: 85 400;
+                stroke-dashoffset: -220;
+                transition: 1s all ease;
+            }
 
-      /* 
+            /* 
          Pushing the text up into the SVG. Without this the
          text would be below the div's.
          */
-      #text {
-        margin-top: -35px;
-        text-align: center;
-      }
+            #text {
+                margin-top: -35px;
+                text-align: center;
+            }
 
-      #text a {
-        color: white;
-        text-decoration: none;
-        font-weight: 100;
-        font-size: 1.1em;
-      }
+            #text a {
+                color: white;
+                text-decoration: none;
+                font-weight: 100;
+                font-size: 1.1em;
+            }
 
-      /* 
+            /* 
          Changing the shape on hover. I change the color of the stroke,
          make it thinner, then set it to again wrap around the entire parent element.
          */
-      .svg-wrapper:hover #shape {
-        stroke-dasharray: 50 0;
-        stroke-width: 3px;
-        stroke-dashoffset: 0;
-        stroke: #defe47;
-      }
-    </style>
-    <!-- Start Single Page Apps for GitHub Pages -->
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      // When the single page app is loaded further down in this file,
-      // the correct url will be waiting in the browser's history for
-      // the single page app to route accordingly.
-      (function(l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-        }
-      }(window.location))
-    </script>
-    <!-- End Single Page Apps for GitHub Pages -->
-  </head>
-  <body>
-    <canvas id="bgCanvas"></canvas>
-    <div id='background'>
-      <section class="masthead" role="img" aria-label="Image Description">
-        <h2>Hi! I am </h2>
-        <h1 class='flicker-slow'> Bikash </h1>
-        <h2>currently a postdoctoral fellow at EMBL-EBI.</h2>
-        <div class="position">
-          <!--start button, nothing above this is necessary -->
-          <div class="svg-wrapper">
-            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-              <rect id="shape" height="40" width="150" />
-              <div id="text">
-                <a href="https://scholar.google.com/citations?user=vC7RldwAAAAJ" target="_blank" rel="noopener noreferrer">
-                  <span class="spot"></span>Scholar Google </a>
-              </div>
-            </svg>
-          </div>
-          <!--Next button -->
-          <div class="svg-wrapper">
-            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-              <rect id="shape" height="40" width="150" />
-              <div id="text">
-                <a href="https://nz.linkedin.com/in/bikash-bhandari-211844213" target="_blank" rel="noopener noreferrer">
-                  <span class="spot"></span>LinkedIn </a>
-              </div>
-            </svg>
-          </div>
-          <!--Next button -->
-          <div class="svg-wrapper">
-            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-              <rect id="shape" height="40" width="150" />
-              <div id="text">
-                <a href="https://bkb3.github.io/homepage/index_old" target="_blank" rel="noopener noreferrer">
-                  <span class="spot"></span>Old pages </a>
-              </div>
-            </svg>
-          </div>
+            .svg-wrapper:hover #shape {
+                stroke-dasharray: 50 0;
+                stroke-width: 3px;
+                stroke-dashoffset: 0;
+                stroke: #defe47;
+            }
+
+            /*https://codepen.io/ruben-vardanyan/pen/OKgvmx*/
+
+            .middle {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #270537;
+                -webkit-transition: opacity 2000ms linear;
+            }
+            .bar {
+                position: absolute;
+                transform: rotateX(60deg);
+
+                border-radius: 50%;
+                transform-origin: bottom center;
+                animation: loading 1.5s ease-in-out infinite;
+            }
+            .bar1 {
+                width: 50px;
+                height: 50px;
+                animation-delay: 0.1s;
+            }
+            .bar2 {
+                width: 100px;
+                height: 100px;
+                animation-delay: 0.2s;
+            }
+            .bar3 {
+                width: 150px;
+                height: 150px;
+                animation-delay: 0.3s;
+            }
+            .bar4 {
+                width: 200px;
+                height: 200px;
+                animation-delay: 0.4s;
+            }
+            .bar5 {
+                width: 250px;
+                height: 250px;
+                animation-delay: 0.5s;
+            }
+            .bar6 {
+                width: 300px;
+                height: 300px;
+                animation-delay: 0.6s;
+            }
+            .bar7 {
+                width: 350px;
+                height: 350px;
+                animation-delay: 0.7s;
+            }
+            .bar8 {
+                width: 400px;
+                height: 400px;
+                animation-delay: 0.8s;
+            }
+            @keyframes loading {
+                0% {
+                    transform: rotateX(60deg) translateZ(0px);
+                    border: 5px solid red;
+                }
+                50% {
+                    transform: rotateX(60deg) translateZ(150px);
+                    border: 5px solid yellow;
+                }
+                90% {
+                    transform: rotateX(60deg) translateZ(0px);
+                    border: 5px solid transparent;
+                }
+                100% {
+                    transform: rotateX(60deg) translateZ(0px);
+                    border: 5px solid transparent;
+                }
+            }
+        </style>
+        <!-- Start Single Page Apps for GitHub Pages -->
+        <script type="text/javascript">
+            // Single Page Apps for GitHub Pages
+            // MIT License
+            // https://github.com/rafgraph/spa-github-pages
+            // This script checks to see if a redirect is present in the query string,
+            // converts it back into the correct url and adds it to the
+            // browser's history using window.history.replaceState(...),
+            // which won't cause the browser to attempt to load the new url.
+            // When the single page app is loaded further down in this file,
+            // the correct url will be waiting in the browser's history for
+            // the single page app to route accordingly.
+            (function (l) {
+                if (l.search[1] === "/") {
+                    var decoded = l.search
+                        .slice(1)
+                        .split("&")
+                        .map(function (s) {
+                            return s.replace(/~and~/g, "&");
+                        })
+                        .join("?");
+                    window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+                }
+            })(window.location);
+        </script>
+        <!-- End Single Page Apps for GitHub Pages -->
+    </head>
+    <body>
+        <div class="middle" id="loading">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+            <div class="bar bar5"></div>
+            <div class="bar bar6"></div>
+            <div class="bar bar7"></div>
+            <div class="bar bar8"></div>
         </div>
-        <div id='mysteryText'></div>
-      </section>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-    <script>
-      let rand = Math.random(0, 1)
-      if (rand <= 0.3) {
-        VANTA.BIRDS({
-          el: "#background",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 0.25,
-          backgroundColor: '#270537',
-          color1: '#defe47',
-          color2: '#00b3fe',
-          birdSize: 0.80,
-          wingSpan: 22.00
-        })
-      } else if (rand > 0.3 && rand < 0.7) {
-        VANTA.RINGS({
-          el: "#background",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 0.25,
-          backgroundColor: '#270537',
-          color: '#defe47'
-        })
-      } else if (rand >= 0.7 && rand < 0.99) {
-        VANTA.GLOBE({
-          el: "#background",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 0.25,
-          color2: '#defe47',
-          color: '#00b3fe',
-          backgroundColor: '#270537',
-        })
-      } else {
-        let mm = document.createElement("h3");
-        mm.textContent = "🍀This background has only 1% chance of appearing!🍀"
-        document.getElementById('mysteryText').append(mm);
+        <canvas id="bgCanvas"></canvas>
+        <div id="background">
+            <section class="masthead" role="img" aria-label="Image Description">
+                <h2>Hi! I am</h2>
+                <h1 class="flicker-slow">Bikash</h1>
+                <h2>currently a postdoctoral fellow at EMBL-EBI.</h2>
+                <div class="position">
+                    <!--start button -->
+                    <div class="svg-wrapper">
+                        <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                            <rect id="shape" height="40" width="150" />
+                            <div id="text">
+                                <a href="https://scholar.google.com/citations?user=vC7RldwAAAAJ" target="_blank" rel="noopener noreferrer">
+                                    <span class="spot"></span>
+                                    Scholar Google
+                                </a>
+                            </div>
+                        </svg>
+                    </div>
+                    <!--Next button -->
+                    <div class="svg-wrapper">
+                        <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                            <rect id="shape" height="40" width="150" />
+                            <div id="text">
+                                <a href="https://nz.linkedin.com/in/bikash-bhandari-211844213" target="_blank" rel="noopener noreferrer">
+                                    <span class="spot"></span>
+                                    LinkedIn
+                                </a>
+                            </div>
+                        </svg>
+                    </div>
+                    <!--Next button -->
+                    <div class="svg-wrapper">
+                        <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+                            <rect id="shape" height="40" width="150" />
+                            <div id="text">
+                                <a href="https://bkb3.github.io/homepage/index_old" target="_blank" rel="noopener noreferrer">
+                                    <span class="spot"></span>
+                                    Old pages
+                                </a>
+                            </div>
+                        </svg>
+                    </div>
+                </div>
+                <div id="mysteryText"></div>
+            </section>
+        </div>
 
-
-        //https://codepen.io/loktar00/pen/DdWxwL
-        (function() {
-          var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
-            window.setTimeout(callback, 1000 / 60);
-          };
-          window.requestAnimationFrame = requestAnimationFrame;
-        })();
-        // Terrain stuff.
-        var background = document.getElementById("bgCanvas"),
-          bgCtx = background.getContext("2d"),
-          width = window.innerWidth,
-          height = document.body.offsetHeight;
-        (height < 400) ? height = 400: height;
-        background.width = width;
-        background.height = height;
-
-        function Terrain(options) {
-          options = options || {};
-          this.terrain = document.createElement("canvas");
-          this.terCtx = this.terrain.getContext("2d");
-          this.scrollDelay = options.scrollDelay || 90;
-          this.lastScroll = new Date().getTime();
-          this.terrain.width = width;
-          this.terrain.height = height;
-          this.fillStyle = options.fillStyle || "#191D4C";
-          this.mHeight = options.mHeight || height;
-          // generate
-          this.points = [];
-          var displacement = options.displacement || 140,
-            power = Math.pow(2, Math.ceil(Math.log(width) / (Math.log(2))));
-          // set the start height and end height for the terrain
-          this.points[0] = this.mHeight; //(this.mHeight - (Math.random() * this.mHeight / 2)) - displacement;
-          this.points[power] = this.points[0];
-          // create the rest of the points
-          for (var i = 1; i < power; i *= 2) {
-            for (var j = (power / i) / 2; j < power; j += power / i) {
-              this.points[j] = ((this.points[j - (power / i) / 2] + this.points[j + (power / i) / 2]) / 2) + Math.floor(Math.random() * -displacement + displacement);
+        <script>
+            function cdnLoaded() {
+                var loading = document.getElementById("loading");
+                loading.style.opacity = "0.9";
+                setTimeout(() => loading.remove(), 1000);
             }
-            displacement *= 0.6;
-          }
-          document.body.appendChild(this.terrain);
-        }
-        Terrain.prototype.update = function() {
-          // draw the terrain
-          this.terCtx.clearRect(0, 0, width, height);
-          this.terCtx.fillStyle = this.fillStyle;
-          if (new Date().getTime() > this.lastScroll + this.scrollDelay) {
-            this.lastScroll = new Date().getTime();
-            this.points.push(this.points.shift());
-          }
-          this.terCtx.beginPath();
-          for (var i = 0; i <= width; i++) {
-            if (i === 0) {
-              this.terCtx.moveTo(0, this.points[0]);
-            } else if (this.points[i] !== undefined) {
-              this.terCtx.lineTo(i, this.points[i]);
-            }
-          }
-          this.terCtx.lineTo(width, this.terrain.height);
-          this.terCtx.lineTo(0, this.terrain.height);
-          this.terCtx.lineTo(0, this.points[0]);
-          this.terCtx.fill();
-        }
-        // Second canvas used for the stars
-        bgCtx.fillStyle = '#05004c';
-        bgCtx.fillRect(0, 0, width, height);
-        // stars
-        function Star(options) {
-          this.size = Math.random() * 2;
-          this.speed = Math.random() * .05;
-          this.x = options.x;
-          this.y = options.y;
-        }
-        Star.prototype.reset = function() {
-          this.size = Math.random() * 2;
-          this.speed = Math.random() * .05;
-          this.x = width;
-          this.y = Math.random() * height;
-        }
-        Star.prototype.update = function() {
-          this.x -= this.speed;
-          if (this.x < 0) {
-            this.reset();
-          } else {
-            bgCtx.fillRect(this.x, this.y, this.size, this.size);
-          }
-        }
-
-        function ShootingStar() {
-          this.reset();
-        }
-        ShootingStar.prototype.reset = function() {
-          this.x = Math.random() * width;
-          this.y = 0;
-          this.len = (Math.random() * 80) + 10;
-          this.speed = (Math.random() * 10) + 6;
-          this.size = (Math.random() * 1) + 0.1;
-          // this is used so the shooting stars arent constant
-          this.waitTime = new Date().getTime() + (Math.random() * 3000) + 500;
-          this.active = false;
-        }
-        ShootingStar.prototype.update = function() {
-          if (this.active) {
-            this.x -= this.speed;
-            this.y += this.speed;
-            if (this.x < 0 || this.y >= height) {
-              this.reset();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+        <script onload="cdnLoaded()" src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+        <script>
+            let rand = Math.random(0, 1);
+            if (rand <= 0.3) {
+                VANTA.BIRDS({
+                    el: "#background",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.0,
+                    minWidth: 200.0,
+                    scale: 1.0,
+                    scaleMobile: 0.25,
+                    backgroundColor: "#270537",
+                    color1: "#defe47",
+                    color2: "#00b3fe",
+                    birdSize: 0.8,
+                    wingSpan: 22.0,
+                });
+            } else if (rand > 0.3 && rand < 0.7) {
+                VANTA.RINGS({
+                    el: "#background",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.0,
+                    minWidth: 200.0,
+                    scale: 1.0,
+                    scaleMobile: 0.25,
+                    backgroundColor: "#270537",
+                    color: "#defe47",
+                });
+            } else if (rand >= 0.7 && rand < 0.99) {
+                VANTA.GLOBE({
+                    el: "#background",
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.0,
+                    minWidth: 200.0,
+                    scale: 1.0,
+                    scaleMobile: 0.25,
+                    color2: "#defe47",
+                    color: "#00b3fe",
+                    backgroundColor: "#270537",
+                });
             } else {
-              bgCtx.lineWidth = this.size;
-              bgCtx.beginPath();
-              bgCtx.moveTo(this.x, this.y);
-              bgCtx.lineTo(this.x + this.len, this.y - this.len);
-              bgCtx.stroke();
+                let mm = document.createElement("h3");
+                mm.textContent = "🍀This background has only 1% chance of appearing!🍀";
+                document.getElementById("mysteryText").append(mm);
+
+                //https://codepen.io/loktar00/pen/DdWxwL
+                (function () {
+                    var requestAnimationFrame =
+                        window.requestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        function (callback) {
+                            window.setTimeout(callback, 1000 / 60);
+                        };
+                    window.requestAnimationFrame = requestAnimationFrame;
+                })();
+                // Terrain stuff.
+                var background = document.getElementById("bgCanvas"),
+                    bgCtx = background.getContext("2d"),
+                    width = window.innerWidth,
+                    height = document.body.offsetHeight;
+                height < 400 ? (height = 400) : height;
+                background.width = width;
+                background.height = height;
+
+                function Terrain(options) {
+                    options = options || {};
+                    this.terrain = document.createElement("canvas");
+                    this.terCtx = this.terrain.getContext("2d");
+                    this.scrollDelay = options.scrollDelay || 90;
+                    this.lastScroll = new Date().getTime();
+                    this.terrain.width = width;
+                    this.terrain.height = height;
+                    this.fillStyle = options.fillStyle || "#191D4C";
+                    this.mHeight = options.mHeight || height;
+                    // generate
+                    this.points = [];
+                    var displacement = options.displacement || 140,
+                        power = Math.pow(2, Math.ceil(Math.log(width) / Math.log(2)));
+                    // set the start height and end height for the terrain
+                    this.points[0] = this.mHeight; //(this.mHeight - (Math.random() * this.mHeight / 2)) - displacement;
+                    this.points[power] = this.points[0];
+                    // create the rest of the points
+                    for (var i = 1; i < power; i *= 2) {
+                        for (var j = power / i / 2; j < power; j += power / i) {
+                            this.points[j] = (this.points[j - power / i / 2] + this.points[j + power / i / 2]) / 2 + Math.floor(Math.random() * -displacement + displacement);
+                        }
+                        displacement *= 0.6;
+                    }
+                    document.body.appendChild(this.terrain);
+                }
+                Terrain.prototype.update = function () {
+                    // draw the terrain
+                    this.terCtx.clearRect(0, 0, width, height);
+                    this.terCtx.fillStyle = this.fillStyle;
+                    if (new Date().getTime() > this.lastScroll + this.scrollDelay) {
+                        this.lastScroll = new Date().getTime();
+                        this.points.push(this.points.shift());
+                    }
+                    this.terCtx.beginPath();
+                    for (var i = 0; i <= width; i++) {
+                        if (i === 0) {
+                            this.terCtx.moveTo(0, this.points[0]);
+                        } else if (this.points[i] !== undefined) {
+                            this.terCtx.lineTo(i, this.points[i]);
+                        }
+                    }
+                    this.terCtx.lineTo(width, this.terrain.height);
+                    this.terCtx.lineTo(0, this.terrain.height);
+                    this.terCtx.lineTo(0, this.points[0]);
+                    this.terCtx.fill();
+                };
+                // Second canvas used for the stars
+                bgCtx.fillStyle = "#05004c";
+                bgCtx.fillRect(0, 0, width, height);
+                // stars
+                function Star(options) {
+                    this.size = Math.random() * 2;
+                    this.speed = Math.random() * 0.05;
+                    this.x = options.x;
+                    this.y = options.y;
+                }
+                Star.prototype.reset = function () {
+                    this.size = Math.random() * 2;
+                    this.speed = Math.random() * 0.05;
+                    this.x = width;
+                    this.y = Math.random() * height;
+                };
+                Star.prototype.update = function () {
+                    this.x -= this.speed;
+                    if (this.x < 0) {
+                        this.reset();
+                    } else {
+                        bgCtx.fillRect(this.x, this.y, this.size, this.size);
+                    }
+                };
+
+                function ShootingStar() {
+                    this.reset();
+                }
+                ShootingStar.prototype.reset = function () {
+                    this.x = Math.random() * width;
+                    this.y = 0;
+                    this.len = Math.random() * 80 + 10;
+                    this.speed = Math.random() * 10 + 6;
+                    this.size = Math.random() * 1 + 0.1;
+                    // this is used so the shooting stars arent constant
+                    this.waitTime = new Date().getTime() + Math.random() * 3000 + 500;
+                    this.active = false;
+                };
+                ShootingStar.prototype.update = function () {
+                    if (this.active) {
+                        this.x -= this.speed;
+                        this.y += this.speed;
+                        if (this.x < 0 || this.y >= height) {
+                            this.reset();
+                        } else {
+                            bgCtx.lineWidth = this.size;
+                            bgCtx.beginPath();
+                            bgCtx.moveTo(this.x, this.y);
+                            bgCtx.lineTo(this.x + this.len, this.y - this.len);
+                            bgCtx.stroke();
+                        }
+                    } else {
+                        if (this.waitTime < new Date().getTime()) {
+                            this.active = true;
+                        }
+                    }
+                };
+                var entities = [];
+                // init the stars
+                for (var i = 0; i < height; i++) {
+                    entities.push(
+                        new Star({
+                            x: Math.random() * width,
+                            y: Math.random() * height,
+                        })
+                    );
+                }
+                // Add 2 shooting stars that just cycle.
+                entities.push(new ShootingStar());
+                entities.push(new ShootingStar());
+                entities.push(
+                    new Terrain({
+                        mHeight: height / 2 - 120,
+                    })
+                );
+                entities.push(
+                    new Terrain({
+                        displacement: 120,
+                        scrollDelay: 50,
+                        fillStyle: "rgb(17,20,40)",
+                        mHeight: height / 2 - 60,
+                    })
+                );
+                entities.push(
+                    new Terrain({
+                        displacement: 100,
+                        scrollDelay: 20,
+                        fillStyle: "rgb(10,10,5)",
+                        mHeight: height / 2,
+                    })
+                );
+                //animate background
+                function animate() {
+                    bgCtx.fillStyle = "#110E19";
+                    bgCtx.fillRect(0, 0, width, height);
+                    bgCtx.fillStyle = "#ffffff";
+                    bgCtx.strokeStyle = "#ffffff";
+                    var entLen = entities.length;
+                    while (entLen--) {
+                        entities[entLen].update();
+                    }
+                    requestAnimationFrame(animate);
+                }
+                animate();
             }
-          } else {
-            if (this.waitTime < new Date().getTime()) {
-              this.active = true;
-            }
-          }
-        }
-        var entities = [];
-        // init the stars
-        for (var i = 0; i < height; i++) {
-          entities.push(new Star({
-            x: Math.random() * width,
-            y: Math.random() * height
-          }));
-        }
-        // Add 2 shooting stars that just cycle.
-        entities.push(new ShootingStar());
-        entities.push(new ShootingStar());
-        entities.push(new Terrain({
-          mHeight: (height / 2) - 120
-        }));
-        entities.push(new Terrain({
-          displacement: 120,
-          scrollDelay: 50,
-          fillStyle: "rgb(17,20,40)",
-          mHeight: (height / 2) - 60
-        }));
-        entities.push(new Terrain({
-          displacement: 100,
-          scrollDelay: 20,
-          fillStyle: "rgb(10,10,5)",
-          mHeight: height / 2
-        }));
-        //animate background
-        function animate() {
-          bgCtx.fillStyle = '#110E19';
-          bgCtx.fillRect(0, 0, width, height);
-          bgCtx.fillStyle = '#ffffff';
-          bgCtx.strokeStyle = '#ffffff';
-          var entLen = entities.length;
-          while (entLen--) {
-            entities[entLen].update();
-          }
-          requestAnimationFrame(animate);
-        }
-        animate();
-      }
-    </script>
-  </body>
+        </script>
+    </body>
 </html>
