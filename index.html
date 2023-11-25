@@ -331,7 +331,7 @@
                     </div>
                 </div>
                 <div id="mysteryText"></div>
-<iframe style="border: 10px; width: 50%; height: 42px; margin-left:20px; margin-top:40px; background-color: #270537;" src="https://bandcamp.com/EmbeddedPlayer/album=1263252169/size=small/bgcol=ffffff/linkcol=7137dc/track=2623640288/transparent=true/" seamless><a href="https://heliosmusic.bandcamp.com/album/yume">Yume by Helios</a></iframe>
+<iframe id="iframe" style="border: 10px; width: 50%; height: 42px; margin-left:20px; margin-top:40px; background-color: #270537; display:none;" src="https://bandcamp.com/EmbeddedPlayer/album=1263252169/size=small/bgcol=ffffff/linkcol=7137dc/track=2623640288/transparent=true/" seamless><a href="https://heliosmusic.bandcamp.com/album/yume">Yume by Helios</a></iframe>
             </section>
         </div>
 
@@ -363,6 +363,7 @@
                     color2: "#00b3fe",
                     birdSize: 0.8,
                     wingSpan: 22.0,
+                    quantity: 4.00
                 });
             } else if (rand > 0.3 && rand < 0.7) {
                 VANTA.RINGS({
@@ -393,8 +394,9 @@
                 });
             } else {
                 let mm = document.createElement("h3");
-                mm.textContent = "🍀This background has only 1% chance of appearing!🍀";
+                mm.innerHTML = "🍀This background has only 1% chance of appearing!🍀<br/>Please enjoy this nice ambient music!";
                 document.getElementById("mysteryText").append(mm);
+                document.getElementById("iframe").style.display = '';
 
                 //https://codepen.io/loktar00/pen/DdWxwL
                 (function () {
